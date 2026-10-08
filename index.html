@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Generation Flotilla — French Riviera 2027</title>
 
+<!-- Preload critical Hero background image to eliminate LCP delay -->
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=75" fetchpriority="high">
+
 <!-- Open Graph / Social Sharing Metadata -->
 <meta property="og:title" content="New Generation Flotilla — French Riviera 2027">
 <meta property="og:description" content="Sail, explore, race, and celebrate across the South of France aboard a private fleet of Bali catamarans.">
@@ -57,13 +60,26 @@
   .hero {
     position: relative;
     background: linear-gradient(180deg, rgba(11,26,45,0.45) 0%, rgba(11,26,45,0.90) 100%), 
-                url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+                url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=75') center/cover no-repeat;
     color: #ffffff;
     padding: 100px 40px 60px 40px;
     border-radius: 12px;
     margin-bottom: 36px;
     text-align: center;
+    overflow: hidden;
   }
+  
+  /* Hidden high-priority img element to trigger fast preloading in browser engines */
+  .hero-preload-img {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+  }
+
   .brand-badge {
     text-transform: uppercase;
     font-family: 'Cormorant Garamond', serif;
@@ -613,6 +629,12 @@
 
   <!-- HERO SECTION -->
   <header class="hero" role="banner">
+    <!-- Explicit high priority preloader for browser engine LCP optimization -->
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=75" 
+         alt="Hero background preloader" 
+         class="hero-preload-img"
+         fetchpriority="high">
+
     <div class="brand-badge">New Generation Flotilla</div>
     <h1 class="main-title">FRENCH RIVIERA 2027</h1>
     <div class="subtitle">Sail. Explore. Race. Celebrate.</div>
@@ -672,7 +694,7 @@
         <!-- BALI CATSMART -->
         <article class="fleet-card">
           <a href="https://www.bali-catamarans.com/en/catamarans/bali-catsmart" target="_blank" rel="noopener" class="fleet-link" title="Explore Bali CatSmart technical specifications">
-            <img src="catsmart.avif" alt="Bali CatSmart structural layout plan" class="fleet-image" width="600" height="375" loading="lazy">
+            <img src="catsmart.avif" alt="Bali CatSmart structural layout plan" class="fleet-image" width="600" height="375" fetchpriority="high">
           </a>
           <div class="fleet-body">
             <div>
@@ -688,7 +710,7 @@
         <!-- BALI CATSPACE -->
         <article class="fleet-card">
           <a href="https://www.bali-catamarans.com/en/catamarans/bali-catspace" target="_blank" rel="noopener" class="fleet-link" title="Explore Bali Catspace technical specifications">
-            <img src="catspace.avif" alt="Bali Catspace structural layout plan" class="fleet-image" width="600" height="375" loading="lazy">
+            <img src="catspace.avif" alt="Bali Catspace structural layout plan" class="fleet-image" width="600" height="375" fetchpriority="high">
           </a>
           <div class="fleet-body">
             <div>
@@ -704,7 +726,7 @@
         <!-- BALI 4.2 -->
         <article class="fleet-card">
           <a href="https://www.bali-catamarans.com/en/catamarans/bali-4-2" target="_blank" rel="noopener" class="fleet-link" title="Explore Bali 4.2 technical specifications">
-            <img src="4.2.avif" alt="Bali 4.2 structural layout plan" class="fleet-image" width="600" height="375" loading="lazy">
+            <img src="4.2.avif" alt="Bali 4.2 structural layout plan" class="fleet-image" width="600" height="375" fetchpriority="high">
           </a>
           <div class="fleet-body">
             <div>
